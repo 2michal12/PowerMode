@@ -1,0 +1,2 @@
+Je potrebne si pridat jxl.jar (Libraries -> Add JAR/Folder -> jxl.jar) aby to pracovalo rovno s excelom.
+Po spusteni sa v korenovom adresari vytvori subor statistic.xls v ktorom bude potrebny vystup pre Ulohu 3.
