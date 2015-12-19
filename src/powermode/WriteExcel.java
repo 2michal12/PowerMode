@@ -66,20 +66,21 @@ public class WriteExcel {
     private void createContent(WritableSheet sheet, double[] arr, int size) throws WriteException,
             RowsExceededException {
         // Write a few number
-        for (int i = 1; i < size+1; i++) {
+        for (int i = 0; i < size; i++) {
             // First column
-            addNumber(sheet, 0, i, i);
+            addNumber(sheet, 0, i+1, i);
             // Second column
-            addNumber(sheet, 1, i, arr[i]);
+            addNumber(sheet, 1, i+1, arr[i]);
         }
         // average time
+        size++;
         addLabel(sheet, 3, 1, "Average time (ns): ");
-        String average = "AVERAGE(B2:B"+size+1+")";
+        String average = "AVERAGE(B2:B"+size+")";
         sheet.addCell(new Formula(4, 1, average));
         
         //variance
         addLabel(sheet, 3, 2, "Variance: ");
-        String variance = "VAR(B2:B"+size+1+")";
+        String variance = "VAR(B2:B"+size+")";
         sheet.addCell(new Formula(4, 2, variance));
         
     }
