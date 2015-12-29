@@ -22,7 +22,7 @@ public class PowerMode {
     public static void main(String[] args) throws IOException, WriteException {
         exponent_e(); //vypocita exponenty pre dane "d"
         //pri ulohe4 zmenim potrebny Ei exponent inak zakomunetujem priradnie d = Ei;
-        d = e0;
+        d = e3;
         
         double[] uloha3 = new double[N];
         long sum = 0;
@@ -34,8 +34,8 @@ public class PowerMode {
                 uloha3[it] = sum / K;
                 it++;
                 sum = 0;
-                //random dlzka spravy m pre ulohu 3b
-                //m = new BigDecimal((Math.random() * (n_double - n_double/2)) + n_double/2 ).toBigInteger();
+                //random dlzka spravy m pre ulohu 3b a 4
+                m = new BigDecimal((Math.random() * (n_double - n_double/2)) + n_double/2 ).toBigInteger();
             }
             PowerMod();
             sum += diff;  
@@ -52,10 +52,16 @@ public class PowerMode {
     }
     
     private static void exponent_e(){
-        e0 = d;
-        e1 = d;
-        e2 = d;
-        e3 = d;
+        BigInteger short_d = d;
+        
+        for(int i = (short_d.bitLength()/2 )+1; i < d.bitLength(); i++){
+            short_d = unsetBit(short_d, i);
+        }
+        
+        e0 = short_d;
+        e1 = short_d;
+        e2 = short_d;
+        e3 = short_d;
         
         int i1 = (d.bitLength()/2 );
         int i2 = (d.bitLength()/2 )+1;
